@@ -1,7 +1,5 @@
 # Social Digital Laravel
 
-Remake do sistema Social Digital em Laravel 12 + Blade.
-
 ## Requisitos
 
 - PHP >= 8.2
@@ -9,7 +7,6 @@ Remake do sistema Social Digital em Laravel 12 + Blade.
 - Node.js + npm
 
 ## Instalação
-
 **1. Clone o repositório**
 
 ```bash
@@ -65,6 +62,48 @@ npm run dev
 ```
 
 Acesse: [http://localhost:8000](http://localhost:8000)
+
+## Rodando com Docker
+
+**Requisito:** Docker e Docker Compose instalados.
+
+**1. Suba os containers**
+
+```bash
+docker compose up -d --build
+```
+
+**2. Instale as dependências e configure o ambiente**
+
+```bash
+docker compose exec app composer install
+docker compose exec app cp .env.example .env
+docker compose exec app php artisan key:generate
+```
+
+**3. Crie o banco e rode as migrations**
+
+```bash
+docker compose exec app touch database/database.sqlite
+docker compose exec app php artisan migrate --seed
+```
+
+**4. Compile os assets**
+
+```bash
+docker compose exec app npm install
+docker compose exec app npm run build
+```
+
+Acesse: [http://localhost:8000](http://localhost:8000)
+
+Para parar os containers:
+
+```bash
+docker compose down
+```
+
+---
 
 ## Credenciais de acesso
 
