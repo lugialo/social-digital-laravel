@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\VisitaController as AdminVisitaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AvaliacaoController;
+use App\Http\Controllers\ContatoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect('/login'));
@@ -20,7 +21,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/perfil', fn () => view('user.perfil'))->name('user.perfil');
     Route::get('/avaliacao', [AvaliacaoController::class, 'index'])->name('user.avaliacao');
     Route::post('/avaliacao', [AvaliacaoController::class, 'store'])->name('user.avaliacao.store');
-    Route::get('/contato', fn () => view('user.contato'))->name('user.contato');
+    Route::get('/contato', [ContatoController::class, 'index'])->name('user.contato');
+    Route::post('/contato', [ContatoController::class, 'store'])->name('user.contato.store');
 });
 
 // Admin routes
