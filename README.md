@@ -20,12 +20,6 @@ cd social-digital-laravel
 composer install
 ```
 
-**3. Instale as dependências JS**
-
-```bash
-npm install
-```
-
 **4. Configure o ambiente**
 
 ```bash
@@ -33,15 +27,7 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-**5. Configure o banco de dados**
-
-O projeto usa SQLite por padrão. Crie o arquivo do banco:
-
-```bash
-touch database/database.sqlite
-```
-
-**6. Execute as migrations e o seeder**
+**5. Execute as migrations e o seeder**
 
 ```bash
 php artisan migrate --seed
@@ -53,12 +39,6 @@ php artisan migrate --seed
 
 ```bash
 php artisan serve
-```
-
-**Terminal 2 — assets (Vite):**
-
-```bash
-npm run dev
 ```
 
 Acesse: [http://localhost:8000](http://localhost:8000)
@@ -73,26 +53,11 @@ Acesse: [http://localhost:8000](http://localhost:8000)
 docker compose up -d --build
 ```
 
-**2. Instale as dependências e configure o ambiente**
-
-```bash
-docker compose exec app composer install
-docker compose exec app cp .env.example .env
-docker compose exec app php artisan key:generate
-```
-
 **3. Crie o banco e rode as migrations**
 
 ```bash
 docker compose exec app touch database/database.sqlite
 docker compose exec app php artisan migrate --seed
-```
-
-**4. Compile os assets**
-
-```bash
-docker compose exec app npm install
-docker compose exec app npm run build
 ```
 
 Acesse: [http://localhost:8000](http://localhost:8000)
