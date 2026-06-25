@@ -30,6 +30,19 @@
                         <a class="dropdown-item" href="{{ route('admin.visitas.index') }}">Listar visitas</a>
                     </div>
                 </li>
+                @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.perfil') }}">Perfil</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.avaliacao') }}">Avaliação</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.contato') }}">Contato</a>
+                </li>
                 @endif
             </ul>
             <ul class="navbar-nav ml-auto">

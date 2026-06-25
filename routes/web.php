@@ -16,6 +16,9 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // User routes
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('user.dashboard'))->name('dashboard');
+    Route::get('/perfil', fn () => view('user.perfil'))->name('user.perfil');
+    Route::get('/avaliacao', fn () => view('user.avaliacao'))->name('user.avaliacao');
+    Route::get('/contato', fn () => view('user.contato'))->name('user.contato');
 });
 
 // Admin routes
