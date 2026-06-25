@@ -14,6 +14,17 @@
         <a class="navbar-brand" href="#">Social Digital</a>
         @auth
         <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                @if(Auth::user()->isAdmin())
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Usuários</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('admin.users.create') }}">Novo usuário</a>
+                        <a class="dropdown-item" href="{{ route('admin.users.index') }}">Listar usuários</a>
+                    </div>
+                </li>
+                @endif
+            </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <span class="nav-link text-white">{{ Auth::user()->name }}</span>
@@ -30,6 +41,18 @@
     </nav>
 
     <main class="container mt-4">
+        @if(session('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            </div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="close" data-dismiss="alert"><span>&times;</span></button>
+            </div>
+        @endif
         @yield('content')
     </main>
 
