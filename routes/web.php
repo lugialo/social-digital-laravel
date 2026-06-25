@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\VisitaController as AdminVisitaController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AvaliacaoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', fn () => redirect('/login'));
@@ -17,7 +18,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', fn () => view('user.dashboard'))->name('dashboard');
     Route::get('/perfil', fn () => view('user.perfil'))->name('user.perfil');
-    Route::get('/avaliacao', fn () => view('user.avaliacao'))->name('user.avaliacao');
+    Route::get('/avaliacao', [AvaliacaoController::class, 'index'])->name('user.avaliacao');
+    Route::post('/avaliacao', [AvaliacaoController::class, 'store'])->name('user.avaliacao.store');
     Route::get('/contato', fn () => view('user.contato'))->name('user.contato');
 });
 
