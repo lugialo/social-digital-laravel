@@ -23,6 +23,13 @@
                         <a class="dropdown-item" href="{{ route('admin.users.index') }}">Listar usuários</a>
                     </div>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Visitas</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ route('admin.visitas.create') }}">Nova visita</a>
+                        <a class="dropdown-item" href="{{ route('admin.visitas.index') }}">Listar visitas</a>
+                    </div>
+                </li>
                 @endif
             </ul>
             <ul class="navbar-nav ml-auto">

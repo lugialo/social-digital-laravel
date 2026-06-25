@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\VisitaController as AdminVisitaController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('/users/{user}/print', [AdminUserController::class, 'print'])->name('users.print');
     Route::resource('users', AdminUserController::class);
+
+    Route::get('/visitas/{visita}/print', [AdminVisitaController::class, 'print'])->name('visitas.print');
+    Route::resource('visitas', AdminVisitaController::class);
 });
