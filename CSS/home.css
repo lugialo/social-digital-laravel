@@ -1,0 +1,202 @@
+/******************GLOBAL******************/
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: "Arial";
+    width: 70%;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+}
+
+:root{
+    --color-background: #dadada; 
+}
+:root{
+    --color-here-yellow: #FBE200;
+}
+:root{
+    --color-clean-blue: #3261bc;
+}
+
+/******************HEADER******************/
+header #top{
+    background-color: var(--color-clean-blue);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 150px 10px 150px;
+}
+
+header #top a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: color 0.5s;
+}
+
+header #top a:hover{
+    color: var(--color-here-yellow);
+}
+
+header #top a.home-scr{
+    color: var(--color-here-yellow);
+    margin: 20px;
+}
+
+
+/******************MAIN******************/
+main{
+    background-color: rgb(239, 248, 255);
+}
+
+main #mid .content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px;
+    width: 100%;
+    margin: auto;
+}
+
+main #mid .content img{
+    width: 10vw;
+    margin-right: 50px;
+}
+
+main #mid .article p{
+    font-size: 16px;
+    width: 100%;
+}
+
+
+main #mid .article2 img{
+    position: relative;
+    width: 100%;
+    margin: auto;
+}
+
+main #mid .container .card-phrase{
+    background-color: var(--color-clean-blue);
+    color: white;
+    font-size: 20px;
+    height: 100px;
+    padding: 20px;
+
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 100%;
+    margin: auto;
+}
+
+main #mid .container .article3 p{
+    font-size: 16px;
+    width: 90%;
+    margin: auto;
+    padding: 50px 0px 50px 0px;
+}
+
+footer{
+    text-align: center;
+    background: var(--color-clean-blue);
+    color: white;
+    font-weight: bold;
+    position: relative;
+    bottom: 0px;
+    width: 100%;
+}
+
+footer #bot .bottom .social-midia a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    color: #ffffff84;
+    text-decoration: none;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 480px) {
+    body{
+        width: 100%;
+    } 
+
+    header #top{
+        background-color: rgb(255, 72, 0);
+        font-size: 70%;
+        padding: 10px;
+    }
+
+    header #top a.home-scr{
+        color: var(--color-here-yellow);
+        margin: 5px;
+    }
+}
+/* Media Query for low resolution  Tablets, Ipads */
+@media (min-width: 481px) and (max-width: 767px) {
+    body{
+        width: 100%;
+    }
+
+    header #top{
+        background-color: rebeccapurple;
+        font-size: 75%;
+        padding: 10px 40px 10px 40px;
+    }
+}
+/* Media Query for Tablets Ipads portrait mode */
+@media (min-width: 768px) and (max-width: 1024px){
+    body{
+        width: 75%;
+    }
+
+    header #top{
+        background-color: green;
+        font-size: 80%;
+        padding: 10px 60px 10px 60px;
+    }
+}
+/* Media Query for Laptops and Desktops */
+@media (min-width: 1025px) and (max-width: 1280px){
+    body{
+        width: 80%;
+    }
+
+    header #top{
+        background-color: rgb(26, 255, 0);
+        font-size: 85%;
+        padding: 10px 80px 10px 80px;
+    }
+
+    main #mid .content{
+        display: block;
+        width: 100%;   
+        
+
+    }
+
+    main #mid .content img{
+        width: 50%;
+
+    }
+
+    main #mid .content p{
+        font-size: 18px;        
+    }
+
+}
+/* Media Query for Large screens */
+@media (min-width: 1281px) { 
+    header #top{
+        font-size: 100%;
+    }
+}
