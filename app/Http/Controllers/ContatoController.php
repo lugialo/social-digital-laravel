@@ -16,7 +16,7 @@ class ContatoController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'assunto'  => 'required|string|max:255',
+            'assunto' => 'required|string|max:255',
             'mensagem' => 'required|string|max:2000',
         ]);
 

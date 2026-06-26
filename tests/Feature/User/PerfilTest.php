@@ -78,7 +78,7 @@ class PerfilTest extends TestCase
 
     public function test_perfil_does_not_show_other_users_data(): void
     {
-        $user  = User::factory()->create(['name' => 'Usuário A']);
+        $user = User::factory()->create(['name' => 'Usuário A']);
         $other = User::factory()->create(['name' => 'Usuário B']);
 
         $response = $this->actingAs($user)->get(route('user.perfil'));

@@ -13,7 +13,7 @@ class ContatoTest extends TestCase
     private function payload(array $overrides = []): array
     {
         return array_merge([
-            'assunto'  => 'Dúvida sobre o sistema',
+            'assunto' => 'Dúvida sobre o sistema',
             'mensagem' => 'Gostaria de saber mais sobre o funcionamento.',
         ], $overrides);
     }
@@ -53,8 +53,8 @@ class ContatoTest extends TestCase
         $this->actingAs($user)->post(route('user.contato.store'), $this->payload());
 
         $this->assertDatabaseHas('contatos', [
-            'user_id'  => $user->id,
-            'assunto'  => 'Dúvida sobre o sistema',
+            'user_id' => $user->id,
+            'assunto' => 'Dúvida sobre o sistema',
             'mensagem' => 'Gostaria de saber mais sobre o funcionamento.',
         ]);
     }

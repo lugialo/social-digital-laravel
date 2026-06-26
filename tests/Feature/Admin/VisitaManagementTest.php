@@ -24,16 +24,16 @@ class VisitaManagementTest extends TestCase
     private function payload(array $overrides = []): array
     {
         return array_merge([
-            'user_id'    => User::factory()->create()->id,
-            'membro'     => 'João da Silva',
-            'data'       => '2025-06-10',
-            'hora'       => '14:30',
+            'user_id' => User::factory()->create()->id,
+            'membro' => 'João da Silva',
+            'data' => '2025-06-10',
+            'hora' => '14:30',
             'logradouro' => 'Rua das Flores',
-            'numero'     => '123',
-            'bairro'     => 'Centro',
-            'cidade'     => 'Florianópolis',
-            'estado'     => 'SC',
-            'descricao'  => 'Visita de acompanhamento.',
+            'numero' => '123',
+            'bairro' => 'Centro',
+            'cidade' => 'Florianópolis',
+            'estado' => 'SC',
+            'descricao' => 'Visita de acompanhamento.',
             'observacao' => 'Sem observações.',
         ], $overrides);
     }

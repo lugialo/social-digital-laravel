@@ -41,7 +41,7 @@ class LoginTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 
@@ -54,7 +54,7 @@ class LoginTest extends TestCase
         $admin = User::factory()->create(['role' => 'admin']);
 
         $response = $this->post('/login', [
-            'email'    => $admin->email,
+            'email' => $admin->email,
             'password' => 'password',
         ]);
 
@@ -67,7 +67,7 @@ class LoginTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'senha-errada',
         ]);
 
@@ -78,7 +78,7 @@ class LoginTest extends TestCase
     public function test_user_cannot_login_with_nonexistent_email(): void
     {
         $response = $this->post('/login', [
-            'email'    => 'naoexiste@example.com',
+            'email' => 'naoexiste@example.com',
             'password' => 'password',
         ]);
 
@@ -99,7 +99,7 @@ class LoginTest extends TestCase
     public function test_login_requires_valid_email_format(): void
     {
         $response = $this->post('/login', [
-            'email'    => 'nao-e-um-email',
+            'email' => 'nao-e-um-email',
             'password' => 'password',
         ]);
 
@@ -124,7 +124,7 @@ class LoginTest extends TestCase
         $user = User::factory()->create();
 
         $response = $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'senha-errada',
         ]);
 
@@ -138,7 +138,7 @@ class LoginTest extends TestCase
         $user = User::factory()->create();
 
         $this->post('/login', [
-            'email'    => $user->email,
+            'email' => $user->email,
             'password' => 'password',
         ]);
 

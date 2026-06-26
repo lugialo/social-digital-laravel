@@ -23,7 +23,7 @@ class UserTest extends TestCase
 
     public function test_is_admin_returns_false_when_role_is_null(): void
     {
-        $user = new User();
+        $user = new User;
 
         $this->assertFalse($user->isAdmin());
     }

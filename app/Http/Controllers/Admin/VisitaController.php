@@ -39,16 +39,16 @@ class VisitaController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'user_id'    => ['required', 'exists:users,id'],
-            'membro'     => ['required', 'string', 'max:100'],
-            'data'       => ['required', 'date'],
-            'hora'       => ['required', 'date_format:H:i'],
+            'user_id' => ['required', 'exists:users,id'],
+            'membro' => ['required', 'string', 'max:100'],
+            'data' => ['required', 'date'],
+            'hora' => ['required', 'date_format:H:i'],
             'logradouro' => ['required', 'string', 'max:100'],
-            'numero'     => ['nullable', 'string', 'max:20'],
-            'bairro'     => ['nullable', 'string', 'max:80'],
-            'cidade'     => ['required', 'string', 'max:80'],
-            'estado'     => ['required', 'string', 'size:2'],
-            'descricao'  => ['nullable', 'string'],
+            'numero' => ['nullable', 'string', 'max:20'],
+            'bairro' => ['nullable', 'string', 'max:80'],
+            'cidade' => ['required', 'string', 'max:80'],
+            'estado' => ['required', 'string', 'size:2'],
+            'descricao' => ['nullable', 'string'],
             'observacao' => ['nullable', 'string'],
         ]);
 
@@ -68,16 +68,16 @@ class VisitaController extends Controller
     public function update(Request $request, Visita $visita)
     {
         $data = $request->validate([
-            'user_id'    => ['required', 'exists:users,id'],
-            'membro'     => ['required', 'string', 'max:100'],
-            'data'       => ['required', 'date'],
-            'hora'       => ['required', 'date_format:H:i'],
+            'user_id' => ['required', 'exists:users,id'],
+            'membro' => ['required', 'string', 'max:100'],
+            'data' => ['required', 'date'],
+            'hora' => ['required', 'date_format:H:i'],
             'logradouro' => ['required', 'string', 'max:100'],
-            'numero'     => ['nullable', 'string', 'max:20'],
-            'bairro'     => ['nullable', 'string', 'max:80'],
-            'cidade'     => ['required', 'string', 'max:80'],
-            'estado'     => ['required', 'string', 'size:2'],
-            'descricao'  => ['nullable', 'string'],
+            'numero' => ['nullable', 'string', 'max:20'],
+            'bairro' => ['nullable', 'string', 'max:80'],
+            'cidade' => ['required', 'string', 'max:80'],
+            'estado' => ['required', 'string', 'size:2'],
+            'descricao' => ['nullable', 'string'],
             'observacao' => ['nullable', 'string'],
         ]);
 

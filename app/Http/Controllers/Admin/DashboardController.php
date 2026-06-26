@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Visita;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -13,10 +12,10 @@ class DashboardController extends Controller
     public function index()
     {
         $totalUsuarios = User::where('role', 'user')->count();
-        $totalVisitas  = Visita::count();
-        $visitasMes    = Visita::whereMonth('data', now()->month)
-                               ->whereYear('data', now()->year)
-                               ->count();
+        $totalVisitas = Visita::count();
+        $visitasMes = Visita::whereMonth('data', now()->month)
+            ->whereYear('data', now()->year)
+            ->count();
 
         // Visitas por mês nos últimos 12 meses
         $visitasPorMes = Visita::selectRaw("strftime('%Y-%m', data) as mes, COUNT(*) as total")
@@ -26,12 +25,12 @@ class DashboardController extends Controller
             ->pluck('total', 'mes');
 
         $mesesLabels = [];
-        $mesesData   = [];
+        $mesesData = [];
         for ($i = 11; $i >= 0; $i--) {
-            $dt  = now()->subMonths($i);
+            $dt = now()->subMonths($i);
             $key = $dt->format('Y-m');
             $mesesLabels[] = $dt->format('M/Y');
-            $mesesData[]   = $visitasPorMes[$key] ?? 0;
+            $mesesData[] = $visitasPorMes[$key] ?? 0;
         }
 
         // Visitas por assistente (top 8)

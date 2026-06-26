@@ -37,14 +37,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $data = $request->validate([
-            'name'       => ['required', 'string', 'max:65'],
-            'cpf'        => ['required', 'string', 'max:20', 'unique:users,cpf'],
-            'rg'         => ['nullable', 'string', 'max:20'],
-            'email'      => ['required', 'email', 'max:45', 'unique:users,email'],
-            'phone'      => ['nullable', 'string', 'max:25'],
+            'name' => ['required', 'string', 'max:65'],
+            'cpf' => ['required', 'string', 'max:20', 'unique:users,cpf'],
+            'rg' => ['nullable', 'string', 'max:20'],
+            'email' => ['required', 'email', 'max:45', 'unique:users,email'],
+            'phone' => ['nullable', 'string', 'max:25'],
             'birth_date' => ['nullable', 'date'],
-            'role'       => ['required', Rule::in(['admin', 'user'])],
-            'password'   => ['required', 'string', 'min:8'],
+            'role' => ['required', Rule::in(['admin', 'user'])],
+            'password' => ['required', 'string', 'min:8'],
         ]);
 
         $data['password'] = Hash::make($data['password']);
@@ -63,14 +63,14 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->validate([
-            'name'       => ['required', 'string', 'max:65'],
-            'cpf'        => ['required', 'string', 'max:20', Rule::unique('users', 'cpf')->ignore($user->id)],
-            'rg'         => ['nullable', 'string', 'max:20'],
-            'email'      => ['required', 'email', 'max:45', Rule::unique('users', 'email')->ignore($user->id)],
-            'phone'      => ['nullable', 'string', 'max:25'],
+            'name' => ['required', 'string', 'max:65'],
+            'cpf' => ['required', 'string', 'max:20', Rule::unique('users', 'cpf')->ignore($user->id)],
+            'rg' => ['nullable', 'string', 'max:20'],
+            'email' => ['required', 'email', 'max:45', Rule::unique('users', 'email')->ignore($user->id)],
+            'phone' => ['nullable', 'string', 'max:25'],
             'birth_date' => ['nullable', 'date'],
-            'role'       => ['required', Rule::in(['admin', 'user'])],
-            'password'   => ['nullable', 'string', 'min:8'],
+            'role' => ['required', Rule::in(['admin', 'user'])],
+            'password' => ['nullable', 'string', 'min:8'],
         ]);
 
         if (empty($data['password'])) {

@@ -111,14 +111,14 @@ class UserManagementTest extends TestCase
         $admin = $this->admin();
 
         $response = $this->actingAs($admin)->post(route('admin.users.store'), [
-            'name'       => 'Novo Usuário',
-            'cpf'        => '11122233344',
-            'rg'         => '1234567',
-            'email'      => 'novo@example.com',
-            'phone'      => '11999998888',
+            'name' => 'Novo Usuário',
+            'cpf' => '11122233344',
+            'rg' => '1234567',
+            'email' => 'novo@example.com',
+            'phone' => '11999998888',
             'birth_date' => '1990-05-15',
-            'role'       => 'user',
-            'password'   => 'senha1234',
+            'role' => 'user',
+            'password' => 'senha1234',
         ]);
 
         $response->assertRedirect(route('admin.users.index'));
@@ -128,9 +128,9 @@ class UserManagementTest extends TestCase
     public function test_create_requires_name(): void
     {
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'email'    => 'x@example.com',
-            'cpf'      => '11122233344',
-            'role'     => 'user',
+            'email' => 'x@example.com',
+            'cpf' => '11122233344',
+            'role' => 'user',
             'password' => 'senha1234',
         ]);
 
@@ -140,9 +140,9 @@ class UserManagementTest extends TestCase
     public function test_create_requires_email(): void
     {
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'name'     => 'Teste',
-            'cpf'      => '11122233344',
-            'role'     => 'user',
+            'name' => 'Teste',
+            'cpf' => '11122233344',
+            'role' => 'user',
             'password' => 'senha1234',
         ]);
 
@@ -154,10 +154,10 @@ class UserManagementTest extends TestCase
         $existing = User::factory()->create(['email' => 'duplicado@example.com']);
 
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'name'     => 'Outro',
-            'cpf'      => '11122233344',
-            'email'    => 'duplicado@example.com',
-            'role'     => 'user',
+            'name' => 'Outro',
+            'cpf' => '11122233344',
+            'email' => 'duplicado@example.com',
+            'role' => 'user',
             'password' => 'senha1234',
         ]);
 
@@ -169,10 +169,10 @@ class UserManagementTest extends TestCase
         User::factory()->create(['cpf' => '11122233344']);
 
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'name'     => 'Outro',
-            'cpf'      => '11122233344',
-            'email'    => 'novo@example.com',
-            'role'     => 'user',
+            'name' => 'Outro',
+            'cpf' => '11122233344',
+            'email' => 'novo@example.com',
+            'role' => 'user',
             'password' => 'senha1234',
         ]);
 
@@ -182,10 +182,10 @@ class UserManagementTest extends TestCase
     public function test_create_requires_password(): void
     {
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'name'  => 'Teste',
-            'cpf'   => '11122233344',
+            'name' => 'Teste',
+            'cpf' => '11122233344',
             'email' => 'novo@example.com',
-            'role'  => 'user',
+            'role' => 'user',
         ]);
 
         $response->assertSessionHasErrors('password');
@@ -194,10 +194,10 @@ class UserManagementTest extends TestCase
     public function test_create_requires_password_min_8_chars(): void
     {
         $response = $this->actingAs($this->admin())->post(route('admin.users.store'), [
-            'name'     => 'Teste',
-            'cpf'      => '11122233344',
-            'email'    => 'novo@example.com',
-            'role'     => 'user',
+            'name' => 'Teste',
+            'cpf' => '11122233344',
+            'email' => 'novo@example.com',
+            'role' => 'user',
             'password' => '1234567',
         ]);
 
@@ -207,10 +207,10 @@ class UserManagementTest extends TestCase
     public function test_non_admin_cannot_create_user(): void
     {
         $response = $this->actingAs($this->user())->post(route('admin.users.store'), [
-            'name'     => 'Teste',
-            'cpf'      => '11122233344',
-            'email'    => 'novo@example.com',
-            'role'     => 'user',
+            'name' => 'Teste',
+            'cpf' => '11122233344',
+            'email' => 'novo@example.com',
+            'role' => 'user',
             'password' => 'senha1234',
         ]);
 
@@ -235,10 +235,10 @@ class UserManagementTest extends TestCase
         $target = User::factory()->create(['name' => 'Nome Antigo']);
 
         $this->actingAs($this->admin())->put(route('admin.users.update', $target), [
-            'name'     => 'Nome Novo',
-            'cpf'      => $target->cpf,
-            'email'    => $target->email,
-            'role'     => $target->role,
+            'name' => 'Nome Novo',
+            'cpf' => $target->cpf,
+            'email' => $target->email,
+            'role' => $target->role,
             'password' => '',
         ]);
 
@@ -251,10 +251,10 @@ class UserManagementTest extends TestCase
         $oldHash = $target->password;
 
         $this->actingAs($this->admin())->put(route('admin.users.update', $target), [
-            'name'     => $target->name,
-            'cpf'      => $target->cpf,
-            'email'    => $target->email,
-            'role'     => $target->role,
+            'name' => $target->name,
+            'cpf' => $target->cpf,
+            'email' => $target->email,
+            'role' => $target->role,
             'password' => '',
         ]);
 
@@ -266,10 +266,10 @@ class UserManagementTest extends TestCase
         $target = User::factory()->create(['email' => 'mesmo@example.com']);
 
         $response = $this->actingAs($this->admin())->put(route('admin.users.update', $target), [
-            'name'     => $target->name,
-            'cpf'      => $target->cpf,
-            'email'    => 'mesmo@example.com',
-            'role'     => $target->role,
+            'name' => $target->name,
+            'cpf' => $target->cpf,
+            'email' => 'mesmo@example.com',
+            'role' => $target->role,
             'password' => '',
         ]);
 
@@ -282,10 +282,10 @@ class UserManagementTest extends TestCase
         $target = User::factory()->create();
 
         $response = $this->actingAs($this->user())->put(route('admin.users.update', $target), [
-            'name'  => 'Hack',
-            'cpf'   => $target->cpf,
+            'name' => 'Hack',
+            'cpf' => $target->cpf,
             'email' => $target->email,
-            'role'  => 'user',
+            'role' => 'user',
         ]);
 
         $response->assertStatus(403);

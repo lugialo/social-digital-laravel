@@ -38,7 +38,7 @@ class Visita extends Model
             $this->logradouro,
             $this->numero,
             $this->bairro,
-            $this->cidade . ' - ' . $this->estado,
+            $this->cidade.' - '.$this->estado,
         ]);
 
         return implode(', ', $parts);

@@ -11,10 +11,10 @@ class VisitaTest extends TestCase
     {
         return new Visita(array_merge([
             'logradouro' => 'Rua das Flores',
-            'numero'     => '123',
-            'bairro'     => 'Centro',
-            'cidade'     => 'Florianópolis',
-            'estado'     => 'SC',
+            'numero' => '123',
+            'bairro' => 'Centro',
+            'cidade' => 'Florianópolis',
+            'estado' => 'SC',
         ], $attrs));
     }
 
@@ -52,8 +52,8 @@ class VisitaTest extends TestCase
     {
         $visita = $this->visita([
             'logradouro' => null,
-            'numero'     => null,
-            'bairro'     => null,
+            'numero' => null,
+            'bairro' => null,
         ]);
 
         $this->assertEquals('Florianópolis - SC', $visita->enderecoCompleto());

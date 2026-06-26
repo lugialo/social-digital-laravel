@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\User;
 
-use App\Models\Avaliacao;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use PHPUnit\Framework\Attributes\DataProvider;
 use Tests\TestCase;
 
 class AvaliacaoTest extends TestCase
@@ -14,11 +14,11 @@ class AvaliacaoTest extends TestCase
     private function payload(array $overrides = []): array
     {
         return array_merge([
-            'velocidade'  => 4,
+            'velocidade' => 4,
             'usabilidade' => 5,
-            'design'      => 3,
+            'design' => 3,
             'atendimento' => 4,
-            'geral'       => 4,
+            'geral' => 4,
         ], $overrides);
     }
 
@@ -58,12 +58,12 @@ class AvaliacaoTest extends TestCase
         $this->actingAs($user)->post(route('user.avaliacao.store'), $this->payload());
 
         $this->assertDatabaseHas('avaliacoes', [
-            'user_id'     => $user->id,
-            'velocidade'  => 4,
+            'user_id' => $user->id,
+            'velocidade' => 4,
             'usabilidade' => 5,
-            'design'      => 3,
+            'design' => 3,
             'atendimento' => 4,
-            'geral'       => 4,
+            'geral' => 4,
         ]);
     }
 
@@ -77,7 +77,7 @@ class AvaliacaoTest extends TestCase
 
     // --- Campos obrigatórios ---
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('camposObrigatorios')]
+    #[DataProvider('camposObrigatorios')]
     public function test_campo_is_required(string $campo): void
     {
         $user = User::factory()->create();
@@ -104,7 +104,7 @@ class AvaliacaoTest extends TestCase
 
     // --- Validação de range ---
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('camposObrigatorios')]
+    #[DataProvider('camposObrigatorios')]
     public function test_nota_abaixo_de_1_e_rejeitada(string $campo): void
     {
         $user = User::factory()->create();
@@ -117,7 +117,7 @@ class AvaliacaoTest extends TestCase
         $response->assertSessionHasErrors($campo);
     }
 
-    #[\PHPUnit\Framework\Attributes\DataProvider('camposObrigatorios')]
+    #[DataProvider('camposObrigatorios')]
     public function test_nota_acima_de_5_e_rejeitada(string $campo): void
     {
         $user = User::factory()->create();
